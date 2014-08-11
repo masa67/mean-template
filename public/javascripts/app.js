@@ -1,2 +1,2 @@
 
-angular.module('demoApp', ['ngRoute', 'appRoutes', 'MainCtrl']);
+angular.module('demoApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'UsersService']);

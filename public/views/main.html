@@ -1,3 +1,60 @@
-<div>
-    <p>The main content will appear here.</p>
+<div id="wrapper">
+    <!-- USER INFO-->
+
+    <div id="userInfo">
+        <h2>User Info</h2>
+
+        <p><strong>Name:</strong> <span id="userInfoName"></span><br />
+            <strong>Age:</strong> <span id="userInfoAge"></span><br />
+            <strong>Gender:</strong> <span id="userInfoGender"></span><br />
+            <strong>Location:</strong> <span id="userInfoLocation"></span></p>
+    </div><!-- /USER INFO--><!-- USER LIST-->
+
+    <h2>User List</h2>
+
+    <div id="userList">
+        <table>
+            <thead>
+            <tr>
+                <th>UserName</th>
+
+                <th>Email</th>
+
+                <th>Delete?</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr ng-repeat="user in userList">
+                <td>
+                    <a title="Show Details" rel="{{user.username}}" class="linkshowuser" href="#">
+                        {{user.username}}
+                    </a>
+                </td>
+                <td>
+                    {{user.email}}
+                </td>
+                <td>
+                    <a rel="{{user._id}}" class="linkdeleteuser" href=""#">
+                        delete
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div><!-- /USER LIST--><!-- ADD USER-->
+
+    <h2>Add User</h2>
+
+    <div id="addUser">
+        <fieldset>
+            <input type="text" placeholder="Username" id="inputUserName" /><input type="text"
+                                                                                  placeholder="Email" id="inputUserEmail" /><br />
+            <input type="text" placeholder="Full Name" id="inputUserFullname" /><input type=
+                                                                                               "text" placeholder="Age" id="inputUserAge" /><br />
+            <input type="text" placeholder="Location" id="inputUserLocation" /><input type=
+                                                                                              "text" placeholder="gender" id="inputUserGender" /><br />
+            <button id="btnAddUser">Add User</button>
+        </fieldset>
+    </div><!-- /ADD USER-->
 </div>
