@@ -5,6 +5,11 @@ angular.module('UsersService', ['UsersService']).factory('users', ['$http', func
             $http.get('/users/userlist').then(function(result) {
                 callback(result.data);
             });
+        },
+        addUser: function(data, callback) {
+            $http.post('/users/adduser', data).then(function(result) {
+                callback(result.data);
+            })
         }
     }
 }]);
