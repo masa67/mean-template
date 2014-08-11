@@ -10,6 +10,11 @@ angular.module('UsersService', ['UsersService']).factory('users', ['$http', func
             $http.post('/users/adduser', data).then(function(result) {
                 callback(result.data);
             })
+        },
+        deleteUser: function(data, callback) {
+            $http.delete('/users/deleteuser/' + data).then(function(result) {
+                callback(result.data);
+            })
         }
     }
 }]);

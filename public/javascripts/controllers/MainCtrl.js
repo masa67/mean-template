@@ -46,10 +46,10 @@ angular.module('MainCtrl', []).controller('MainController',
             }
 
             // Use AJAX to post the object to our adduser service
-            users.addUser(newUser, function(data) {
+            users.addUser(newUser, function(response) {
 
                 // Check for successful (blank) response
-                if (data.msg === '') {
+                if (response.msg === '') {
 
                     // Clear the form inputs
                     $('#addUser fieldset input').val('');
@@ -62,7 +62,7 @@ angular.module('MainCtrl', []).controller('MainController',
                 else {
 
                     // If something goes wrong, alert the error message that our service returned
-                    alert('Error: ' + data.msg);
+                    alert('Error: ' + response.msg);
 
                 }
             });
@@ -73,5 +73,41 @@ angular.module('MainCtrl', []).controller('MainController',
             return false;
         }
     });
-}]);
 
+    // Delete User link click
+    $('#userList table tbody').on('click', 'td a.linkdeleteuser', function(event) {
+        event.preventDefault();
+
+        // Pop up a confirmation dialog
+        var confirmation = confirm('Are you sure you want to delete this user?');
+
+        // Check and make sure the user confirmed
+        if (confirmation === true) {
+
+            // If they did, do our delete
+            users.deleteUser($(this).attr('rel'), function(response) {
+
+                // Check for a successful (blank) response
+                if (response.msg === '') {
+                }
+                else {
+                    alert('Error: ' + response.msg);
+                }
+
+                // Update the table
+                users.getUserList(function(data) {
+                    $scope.userList = data;
+                    $scope.$apply();
+                });
+            });
+
+        }
+        else {
+
+            // If they said no to the confirm, do nothing
+            return false;
+
+        }
+
+    });
+}]);
