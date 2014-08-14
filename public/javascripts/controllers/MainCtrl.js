@@ -53,9 +53,7 @@ angular.module('MainCtrl', []).controller('MainController',
                     $('#addUser fieldset input').val('');
 
                     // Update the table
-                    users.getUserList(function(data) {
-                        $scope.userList = data;
-                    });
+                    $scope.userList = users.getUserList();
                 }
                 else {
 
@@ -83,7 +81,7 @@ angular.module('MainCtrl', []).controller('MainController',
         if (confirmation === true) {
 
             // If they did, do our delete
-            users.deleteUser($(this).attr('rel'), function(response) {
+            users.deleteUser({id: $(this).attr('rel')}, function(response) {
 
                 // Check for a successful (blank) response
                 if (response.msg === '') {
@@ -93,10 +91,7 @@ angular.module('MainCtrl', []).controller('MainController',
                 }
 
                 // Update the table
-                users.getUserList(function(data) {
-                    $scope.userList = data;
-                    $scope.$apply();
-                });
+                $scope.userList = users.getUserList();
             });
 
         }
