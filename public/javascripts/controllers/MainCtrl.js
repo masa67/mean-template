@@ -2,9 +2,7 @@
 angular.module('MainCtrl', []).controller('MainController',
     ['$scope', 'users', function($scope, users) {
 
-    users.getUserList(function(data) {
-        $scope.userList = data;
-    });
+    $scope.userList = users.getUserList();
 
     $scope.userDetail = {};
     $('#userList table tbody').on('click', 'td a.linkshowuser', function(event) {
