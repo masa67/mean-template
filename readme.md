@@ -41,6 +41,7 @@ Open the URL in a browser: `http://localhost:3000/`
 
 # Version History
 
+* v.2.1: MainController was loaded twice, now fixed.
 * v.2.0: Replaces `$http` in `UsersService` with `$resource`, the Angular way of accessing RESTful APIs.
 * v.1.0: The first functional version.
 
